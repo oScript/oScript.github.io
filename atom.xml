@@ -5,9 +5,9 @@
   <subtitle>脚本精灵</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://oscript.github.io/"/>
+  <link href="http://iscript.com.cn/"/>
   <updated>2020-01-12T14:17:48.717Z</updated>
-  <id>http://oscript.github.io/</id>
+  <id>http://iscript.com.cn/</id>
   
   <author>
     <name>盒子</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://oscript.github.io/2020-01-12/hello-world/"/>
-    <id>http://oscript.github.io/2020-01-12/hello-world/</id>
+    <link href="http://iscript.com.cn/2020-01-12/hello-world/"/>
+    <id>http://iscript.com.cn/2020-01-12/hello-world/</id>
     <published>2020-01-12T14:17:48.651Z</published>
     <updated>2020-01-12T14:17:48.717Z</updated>
     
