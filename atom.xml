@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://iscript.com.cn/"/>
-  <updated>2020-01-12T14:17:48.717Z</updated>
+  <updated>2015-01-10T09:53:16.725Z</updated>
   <id>http://iscript.com.cn/</id>
   
   <author>
@@ -17,24 +17,539 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://iscript.com.cn/2020-01-12/hello-world/"/>
-    <id>http://iscript.com.cn/2020-01-12/hello-world/</id>
-    <published>2020-01-12T14:17:48.651Z</published>
-    <updated>2020-01-12T14:17:48.717Z</updated>
+    <title>Java MVC设计模式</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-01-10-Java-MVC-Mode/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-01-10-Java-MVC-Mode/</id>
+    <published>2020-01-27T04:52:20.466Z</published>
+    <updated>2015-01-10T09:53:16.725Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p><strong>MVC(Model View Control)模型－视图－控制器</strong></p><p><img src="/assets/pictures/Java/Java_MVC_1.png"></p><h4 id="一、MVC与模板概念的理解"><a href="#一、MVC与模板概念的理解" class="headerlink" title="一、MVC与模板概念的理解"></a>一、MVC与模板概念的理解</h4><p>MVC本来是存在于Desktop程序中的，M是指数据模型，V是指用户界面，C则是控制器。使用MVC的目的是将M和V的实现代码分离，从而使同一个程序可以使用不同的表现形式。比如一批统计数据你可以分别用柱状图、饼图来表示。C存在的目的则是确保M和V的同步，一旦M改变，V应该同步更新。</p><p>模型－视图－控制器（MVC）是Xerox PARC在八十年代为编程语言Smalltalk－80发明的一种软件设计模式，至今已被广泛使用。最近几年被推荐为Sun公司J2EE平台的设计模式，并且受到越来越多的使用 ColdFusion 和 PHP 的开发者的欢迎。模型－视图－控制器模式是一个有用的工具箱，它有很多好处，但也有一些缺点。 </p><h4 id="二、MVC如何工作"><a href="#二、MVC如何工作" class="headerlink" title="二、MVC如何工作"></a>二、MVC如何工作</h4><p>MVC是一个设计模式，它强制性的使应用程序的输入、处理和输出分开。使用MVC应用程序被分成三个核心部件：模型、视图、控制器。它们各自处理自己的任务。 </p><ul><li>视图 </li></ul><p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services. </p><p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表，作为视图来讲，它只是作为一种输出数据并允许用户操纵的方式。 </p><ul><li>模型 </li></ul><p>模型表示企业数据和业务规则。在MVC的三个部件中，模型拥有最多的处理任务。例如它可能用象EJBs和ColdFusion Components这样的构件对象来处理数据库。被模型返回的数据是中立的，就是说模型与数据格式无关，这样一个模型能为多个视图提供数据。由于应用于模型的代码只需写一次就可以被多个视图重用，所以减少了代码的重复性。 </p><ul><li>控制器 </li></ul><p>控制器接受用户的输入并调用模型和视图去完成用户的需求。所以当单击Web页面中的超链接和发送HTML表单时，控制器本身不输出任何东西和做任何处理。它只是接收请求并决定调用哪个模型构件去处理请求，然后用确定用哪个视图来显示模型处理返回的数据。 </p><p><img src="/assets/pictures/Java/Java_MVC_2.gif"></p><p>现在我们总结MVC的处理过程，首先控制器接收用户的请求，并决定应该调用哪个模型来进行处理，然后模型用业务逻辑来处理用户的请求并返回数据，最后控制器用相应的视图格式化模型返回的数据，并通过表示层呈现给用户。</p><h4 id="三、为什么要使用-MVC"><a href="#三、为什么要使用-MVC" class="headerlink" title="三、为什么要使用 MVC"></a>三、为什么要使用 MVC</h4><p>大部分Web应用程序都是用像ASP，PHP，或者CFML这样的过程化语言来创建的。它们将像数据库查询语句这样的数据层代码和像HTML这样的表示层代码混在一起。经验比较丰富的开发者会将数据从表示层分离开来，但这通常不是很容易做到的，它需要精心的计划和不断的尝试。MVC从根本上强制性的将它们分开。尽管构造MVC应用程序需要一些额外的工作，但是它给我们带来的好处是无庸质疑的。</p><p>首先，最重要的一点是多个视图能共享一个模型，现在需要用越来越多的方式来访问你的应用程序。对此，其中一个解决之道是使用MVC，无论你的用户想要Flash界面或是 WAP 界面；用一个模型就能处理它们。由于你已经将数据和业务规则从表示层分开，所以你可以最大化的重用你的代码了。</p><p>由于模型返回的数据没有进行格式化，所以同样的构件能被不同界面使用。例如，很多数据可能用HTML来表示，但是它们也有可能要用Macromedia Flash和WAP来表示。模型也有状态管理和数据持久性处理的功能，例如，基于会话的购物车和电子商务过程也能被Flash网站或者无线联网的应用程序所重用。</p><p>因为模型是自包含的，并且与控制器和视图相分离，所以很容易改变你的应用程序的数据层和业务规则。如果你想把你的数据库从MySQL移植到Oracle，或者改变你的基于RDBMS数据源到LDAP，只需改变你的模型即可。一旦你正确的实现了模型，不管你的数据来自数据库或是LDAP服务器，视图将会正确的显示它们。由于运用MVC的应用程序的三个部件是相互独立，改变其中一个不会影响其它两个，所以依据这种设计思想你能构造良好的松偶合的构件。</p><p>对我来说，控制器的也提供了一个好处，就是可以使用控制器来联接不同的模型和视图去完成用户的需求，这样控制器可以为构造应用程序提供强有力的手段。给定一些可重用的模型和视图，控制器可以根据用户的需求选择模型进行处理，然后选择视图将处理结果显示给用户。</p><h4 id="四、MVC的缺点"><a href="#四、MVC的缺点" class="headerlink" title="四、MVC的缺点"></a>四、MVC的缺点</h4><p>MVC的缺点是由于它没有明确的定义，所以完全理解MVC并不是很容易。使用MVC需要精心的计划，由于它的内部原理比较复杂，所以需要花费一些时间去思考。</p><p>你将不得不花费相当可观的时间去考虑如何将MVC运用到你的应用程序，同时由于模型和视图要严格的分离，这样也给调试应用程序到来了一定的困难。每个构件在使用之前都需要经过彻底的测试。一旦你的构件经过了测试，你就可以毫无顾忌的重用它们了。</p><p>根据开发者经验，由于开发者将一个应用程序分成了三个部件，所以使用MVC同时也意味着你将要管理比以前更多的文件，这一点是显而易见的。这样好像我们的工作量增加了，但是请记住这比起它所能带给我们的好处是不值一提。</p><p>MVC并不适合小型甚至中等规模的应用程序，花费大量时间将MVC应用到规模并不是很大的应用程序通常会得不偿失。</p><h4 id="五、MVC是一条创建软件的好途径"><a href="#五、MVC是一条创建软件的好途径" class="headerlink" title="五、MVC是一条创建软件的好途径"></a>五、MVC是一条创建软件的好途径</h4><p>MVC设计模式是一个很好创建软件的途径，它所提倡的一些原则，像内容和显示互相分离可能比较好理解。但是如果你要隔离模型、视图和控制器的构件，你可能需要重新思考你的应用程序，尤其是应用程序的构架方面。如果你肯接受MVC，并且有能力应付它所带来的额外的工作和复杂性，MVC将会使你的软件在健壮性，代码重用和结构方面上一个新的台阶。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io
+        &lt;p&gt;&lt;strong&gt;MVC(Model View Control)模型－视图－控制器&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/pictures/Java/Java_MVC_1.png&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;一、MVC与模板概念的理解&quot;&gt;&lt;a h
       
     
     </summary>
     
     
+      <category term="Java" scheme="http://iscript.com.cn/categories/Java/"/>
+    
+    
+      <category term="Java MVC" scheme="http://iscript.com.cn/tags/Java-MVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jekyll本地环境故障及解决方法</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-01-16-Github-Error/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-01-16-Github-Error/</id>
+    <published>2020-01-27T04:52:20.449Z</published>
+    <updated>2015-01-16T12:05:30.526Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><a href="http://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a></strong> 是一款简单的博客系统，也可以说是一个静态网站生成器。她有一个模版目录，存放整个静态网站的模版文件，可以通过Liquid处理模版文件，把使用标记语言Textile或Markdown编写的内容文件，按照模版格式，转换成最终的静态网站页面。大名鼎鼎的GitHub Pages就是通过她实现的。</p><p>如何搭建本地环境，百度一下网上很多教程。不多介绍了。</p><p>之前自己在本地搭建了一套环境，不知道为什么，突然就不能正常运行了。出现很多莫名奇怪的问题，大概意思是Ruby解释器不能识别，Gem不正确。</p><p>难道是安装的软件版本、Gem自动更新了？。</p><p>根据错误原因，百度了一下解决办法，因为软件版本差异，最终没解决。</p><p>最后把Python、Ruby全卸载重新按照教程搭建才好的。</p><p>建议：如果遇到我类似的问题，可以尝试将软件换个安装目录。</p><p>希望对你有帮助，谢谢</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://jekyllrb.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Jekyll&lt;/a&gt;&lt;/strong&gt; 是一款简单的博客系统，也可以说是一个静态网站生成器。她有一个模版目录，存放整个静态网站的模版文
+      
+    
+    </summary>
+    
+    
+      <category term="Tools" scheme="http://iscript.com.cn/categories/Tools/"/>
+    
+    
+      <category term="Git Jekyll" scheme="http://iscript.com.cn/tags/Git-Jekyll/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中国足球收获了什么？</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-01-23-asiancup-2015/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-01-23-asiancup-2015/</id>
+    <published>2020-01-27T04:52:20.431Z</published>
+    <updated>2015-01-23T13:23:22.036Z</updated>
+    
+    <content type="html"><![CDATA[<p>没有奇迹，也没有意外。国足完败澳大利亚，亚洲杯平静出局。与以往不同的是，几乎没有球迷再来挖苦和讽刺，大家送上了温情的鼓励。</p><p>0:2输球，场面上毫无悬念，无论是个体的技术能力还是全队的技战术发挥，与对手相比都全面处于下风。如果不是澳大利亚两球领先后放弃了压迫性进攻，中国队甚至有陷入崩溃的可能。<br><img src="/assets/pictures/Sports/china.jpg"><br>赛前的多种幻想，在比赛开始20分钟之后，基本可以宣告破灭。经历了开场的试探性阶段后，澳大利亚很快就夺回了主动权，而且整场始终保持对中国队的压制。在剩余的70分钟里，国足球员们基本上拿不到球，只能跟在对手屁股后面跑，常常可以看到，对手的隆戈在三名中国队员的逼抢下仍然可以从容盘带，而我们的武磊面对对手的一名防守队员却根本没有摆脱的能力，这种个人技术能力上的差距，全面暴露在这场残酷的淘汰赛之中。</p><p>而在战术层面，对手显然也做了更有针对性的部署，采用具有压迫性的打法和防守，彻底打乱了中国队进攻的节奏。所以，中国队在前三场比赛中发挥出色的控球战术，完全不见了踪影。</p><p>唯一一场失利出现在淘汰赛里，这样的结果对中国队很残酷。但是四场比赛下来，作为中国球迷应该没有遗憾。因为中国队在比赛中打出了中国足球许久未见的信心和颇具自身风格的团队足球，这两个要素正是我们一向欠缺的。</p><p>或许我们本来就不应该要求太多。近年来已经沦为亚洲三流的中国队，想要赢下具备亚洲顶尖水准的澳大利亚，本身就是一种苛望。无论从哪个角度说，目前的中国队都不具备和澳洲、日本、韩国正面抗衡的能力，这种差距也不是换一个教练，短期内就能够弥补的。</p><p>本届亚洲杯中国队的收获，除了前文所说的信心和团队足球之外，还通过与沙特、乌兹别克等亚洲二流球队的交手，进一步清晰了自身的实力定位，明确了发展目标，未来五年内，中国足球应该做的是争取打败这些对手，在亚洲二三流球队中脱颖而出，进而实现进军亚洲一流的长远目标。</p><p>输球反而获得了球迷的支持，对中国足球来说，这种场景是近年来难得一见的。这充分说明了广大球迷并非对中国队失去了信心，而是中国足球过去一个阶段令人失望的表现，让谩骂和冷漠取代了鼓励，这种非常态的舆论氛围，更加剧了环境的恶化，相信随着中国队在2015年新年伊始的良好表现，将唤回更多球迷的心。</p><p>正如中国队官方微博在赛后所说，正视差距，修炼内功，怀揣信念，在希望中前行，我们的国家队未来可期，中国队，加油！</p><p><strong>精彩视频：</strong></p><ul><li><a href="http://video.sina.com.cn/p/sports/n/v/2015-01-22/203264540495.html" title="亚洲杯1/4决赛，中国迎战东道主澳大利亚" target="_blank" rel="noopener">http://video.sina.com.cn/p/sports/n/v/2015-01-22/203264540495.html</a></li></ul><ul><li><a href="http://video.sina.cn/sports/other/2015-01-22/detail-icczmvun5320966.d.html?vt=4&amp;pos=10" target="_blank" rel="noopener">http://video.sina.cn/sports/other/2015-01-22/detail-icczmvun5320966.d.html?vt=4&amp;pos=10</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;没有奇迹，也没有意外。国足完败澳大利亚，亚洲杯平静出局。与以往不同的是，几乎没有球迷再来挖苦和讽刺，大家送上了温情的鼓励。&lt;/p&gt;
+&lt;p&gt;0:2输球，场面上毫无悬念，无论是个体的技术能力还是全队的技战术发挥，与对手相比都全面处于下风。如果不是澳大利亚两球领先后放弃了压迫性进
+      
+    
+    </summary>
+    
+    
+      <category term="Sports" scheme="http://iscript.com.cn/categories/Sports/"/>
+    
+    
+      <category term="亚洲杯 中国队" scheme="http://iscript.com.cn/tags/%E4%BA%9A%E6%B4%B2%E6%9D%AF-%E4%B8%AD%E5%9B%BD%E9%98%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不走寻常路！谷歌积木手机可像积木一样DIY</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-01-27-Google-Ara/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-01-27-Google-Ara/</id>
+    <published>2020-01-27T04:52:20.406Z</published>
+    <updated>2015-01-26T19:37:24.729Z</updated>
+    
+    <content type="html"><![CDATA[<p>谷歌要把手机变成积木去玩拼装的传闻已经很久了，而近日，谷歌终于召开了Project Ara模块化手机开发者大会，公布了最新版本的Ara原型机，它最大的特点就是每一个零部件都可以自由拆卸，实现手机DIY，简直碉堡了！</p><p><img src="/assets/pictures/Life/google_ara_4.jpg"></p><p>一种全新的智能电话：全模块化——每一个零部件都可以单独升级或修复，而电动永磁体会牢牢地把这些模块固定在机身上。</p><p><img src="/assets/pictures/Life/google_ara_1.jpg"></p><p>通过Google的开源硬件平台Project Ara，用户可以像玩乐高一样把相机、电池、处理器等等组件搭成一部手机。这样的组装方式能够满足用户个性化的需求，可以单独对一个模块进行更新换代，以及随时实现功能增减而不需要换手机。</p><p>拜Project Ara的灵活性所赐，俄罗斯Lapka公司不走寻常路，搞出了一款奇奇怪怪的Ara手机，无论从外观和功能上都颠覆了人们对手机的认识。</p><p>该公司一直以来重视探索人体与环境的关系，曾在潮流时装店Urban Outfitters卖环境传感器，还获得过Fast Company旗下Co.Design栏目的2013年度设计创新奖。</p><p>Ara硬件在Lapka设计师手中的样子，变得古怪而时尚，有独特的色彩和形状，并加入了能够检测空气质量、二氧化碳、血糖、光线、心跳等环境与健康功能的模块。据说，设计的灵感来源是运用了特殊材料、具有独特质感的高端设计师款球鞋。</p><p><img src="/assets/pictures/Life/google_ara_2.jpg"></p><p>无论是从外观还是功能来看，它已经不像是一只手机了，更像由一堆智能硬件积木搭起来的产品。</p><p>这款Ara手机包括空气质量组件、二氧化碳组件、光学组件、心脏监测组件、血糖计组件和呼吸探测器组件。每个组件对应一项环境或健康监测功能。它甚至还有一个叫做“灵魂”的组件，对此，网站上显示的是：“对此我们还不能多说什么”。</p><p><img src="/assets/pictures/Life/google_ara_3.jpg"></p><p>Lapka创始人Vadik Marmeladove说：“有关Project Ara的一切都超前了五年，只有设计除外。我认为它的设计也应该成为视觉与文化的里程碑。”他认为，Google应该像为Android平台上的软件设计提出Material Design一样，为Ara硬件设计打造一套专属的设计语言。</p><p>Marmeladove认为，Ara平台让人能够在任一维度上扩展手机的形状，使之变成桌面移动实验室。显微镜、甚至椅子都有可能变成Ara手机的硬件模块。听起来可能难以理解，但Lapka已经推出了一款独立显示器硬件——听起来已经离手机相去甚远。</p><p>事实上，Lapka公司认为Project Ara不仅仅可以用于制造手机，还有潜力成为一个物联网开发平台。因此，他们在设计时对自己提出的两个问题是：1)如何挑战这个平台的局限；2)如果Ara组件到处都是，而不再仅仅是一台手机怎么办？</p><p>Google还需要进一步明确Ara硬件能做什么，需要做什么的界限。Lapka公司跨界的设计证明了它远不止是一个能将手机零件组装起来的平台。Ara手机究竟是什么？形状大小有没有限制？这些都有无限的可能性。但可以明确的是，它不能既是一些奇奇怪怪的硬件组合，又同时是我们今天所认识的智能手机。<br><img src="/assets/pictures/Life/google_ara_5.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;谷歌要把手机变成积木去玩拼装的传闻已经很久了，而近日，谷歌终于召开了Project Ara模块化手机开发者大会，公布了最新版本的Ara原型机，它最大的特点就是每一个零部件都可以自由拆卸，实现手机DIY，简直碉堡了！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/pict
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="谷歌 Google 积木手机" scheme="http://iscript.com.cn/tags/%E8%B0%B7%E6%AD%8C-Google-%E7%A7%AF%E6%9C%A8%E6%89%8B%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>麦肯锡金字塔原理</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-01-30-The-Pyramid-Principle/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-01-30-The-Pyramid-Principle/</id>
+    <published>2020-01-27T04:52:20.388Z</published>
+    <updated>2015-01-30T15:07:31.373Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://baike.baidu.com/link?url=7XPuAz2xrDJRtY_XoMwVHerWqdL7QpYCNfUwprendVxrS5B94K45vfp7hWnIqHkFTP4-Ae0e1qjYr521e6qNyql5tJVccFROlXfwKooj_sm" target="_blank" rel="noopener">金字塔原理（Pyramid Principles）</a>，1973年由<a href="http://baike.baidu.com/view/538287.htm?fromtitle=%E9%BA%A6%E8%82%AF%E9%94%A1&amp;fromid=5280534&amp;type=syn" target="_blank" rel="noopener">麦肯锡</a>国际管理咨询公司的咨询顾问<a href="http://baike.baidu.com/view/11784371.htm" target="_blank" rel="noopener">巴巴拉·明托（Barbara Minto）</a>发明，旨在阐述写作过程的组织原理，提倡按照读者的阅读习惯改善写作效果。因为主要思想总是从次要思想中概括出来的，文章中所有思想的理想组织结构也就必定是一个金字塔结构——由一个总的思想统领多组思想。在这种金字塔结构中，思想之间的联系方式可以是纵向的——即任何一个层次的思想都是对其下面一个层次上的思想的总结；也可以是横向的——即多个思想因共同组成一个逻辑推断式，而被并列组织在一起。</p><p><img src="/assets/pictures/Books/The_Pyramid_Principles_1.jpg"></p><p><strong>为什么要学习【金字塔原理】？</strong></p><ul><li><p>可以提高结构思维能力，做一个有逻辑的表达者；</p></li><li><p>可以提高书面书写能力，做一个有思路的展现者；</p></li><li><p>可以提高流程设计能力，做一个有考虑的设计者。</p></li></ul><p>这是一本有关思维方法的好书，仅仅的泛读是不能满足我们学习金字塔原理的需要。我们需要深入理解金字塔原理，并能将这种思维方式运用到日常工作活动中去。并在运用过程中不断反思体会。</p><p><img src="/assets/pictures/Books/The_Pyramid_Principles_2.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;http://baike.baidu.com/link?url=7XPuAz2xrDJRtY_XoMwVHerWqdL7QpYCNfUwprendVxrS5B94K45vfp7hWnIqHkFTP4-Ae0e1qjYr521e6qNyql5tJVccFRO
+      
+    
+    </summary>
+    
+    
+      <category term="Books" scheme="http://iscript.com.cn/categories/Books/"/>
+    
+    
+      <category term="管理 金字塔" scheme="http://iscript.com.cn/tags/%E7%AE%A1%E7%90%86-%E9%87%91%E5%AD%97%E5%A1%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>专为手机打造的键盘</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-01-27-TextBlade/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-01-27-TextBlade/</id>
+    <published>2020-01-27T04:52:20.371Z</published>
+    <updated>2015-01-30T15:12:25.969Z</updated>
+    
+    <content type="html"><![CDATA[<p>小小的键盘上打字真的是很难受的。屏幕上的虚拟键盘可能起到了打字的作用，但是占去了屏幕几乎一半的位置。另外市场上还有出产可携带式的键盘，但它们要不就是太迷你必须得和设备的屏幕一样小，或者就是沉甸甸的带起来不方便。</p><p><img src="/assets/pictures/Life/TextBlade_1.jpg"></p><p>一家叫做WayTools的公司想要改变人们这样的窘境，于是出产了一款拥有三个组成部分的TextBlade键盘。这款键盘折起来只有iPhone 4的一半这么小，可以轻松地就塞进裤子口袋里。但是公司特地说明在这个键盘上使用者完全可以做到全速打字。</p><p>这种与电脑标配QWERTY键盘一样的设计在分开的两半上各放置了四个“智能按键”，键盘上的多点触控技术能用来确定使用者本应要按下的字母。除此之外还有个镶嵌在TextBlade后面的支架可以把整个键盘立起来使用。</p><p>如果两个手指在键盘的一半上同时按下了两个按钮键盘会不会分不清楚呢？实际上并不会发生这样的问题。当你的手在键盘上时候，你手指摆放的方式能够正好和使用电脑键盘时的手势相同，也就是每个字母上正好对着一个手指。</p><p><img src="/assets/pictures/Life/TextBlade_2.jpg"></p><p>键盘利用它多点触摸的技术还发展了其他的附带式功能；空格键的边角也是可触摸的，接触后会启动符号和数字的键盘；特定的几个字母组合还能让使用者方便的剪贴、复制或者撤销操作。</p><p>WayTools的官方描述里提到这种键盘是游离式的。什么是游离式呢？不像大多数的携带式键盘上字母都挤在一起了，公司特别说明这款键盘上你的手指可以触摸的地方绰绰有余，不会像在传统键盘上打字一样觉得挤。</p><p>事实上几个宣传视频中其中有一个展示了在此键盘上也可以每分钟打出100字。而且公司在键盘上开发的各种附加式功能实际上使得TextBlade比标准的电脑键盘都更好用。</p><p>我们并不能在试用产品前就证实这些高大上的广告和标语说的都是真的。不过不得不说，这款携带式键盘打出的理念是我们在市场上见过的最吸引人的。</p><p>TextBlade已在大批生产中，预订售价99美金，但是订单已经早早排到了三月份了。这款键盘和iOS系统或是Android的Kitkat手机系列都是兼容的。</p><p><img src="/assets/pictures/Life/TextBlade_3.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;小小的键盘上打字真的是很难受的。屏幕上的虚拟键盘可能起到了打字的作用，但是占去了屏幕几乎一半的位置。另外市场上还有出产可携带式的键盘，但它们要不就是太迷你必须得和设备的屏幕一样小，或者就是沉甸甸的带起来不方便。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/pictur
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="TextBlade WayTools" scheme="http://iscript.com.cn/tags/TextBlade-WayTools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>应用程序配置不正确的解决办法</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-03-vcredist/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-03-vcredist/</id>
+    <published>2020-01-27T04:52:20.358Z</published>
+    <updated>2015-02-03T16:15:05.370Z</updated>
+    
+    <content type="html"><![CDATA[<p>假如一套写好的程序，在本地都运行正常，但是Copy到其他电脑上，就出现一些奇怪的问题。你有木有遇到过呢？</p><p>今天我就遇到这样一个问题。有台电脑是英文操作系统，把软件打开运行时，提示<strong>“由于应用程序的配置不正确，应用程序未能启动，重新安装应用程序可能会纠正这个问题”</strong>，开始以为是英文操作系统地缘故，后来把软件拷贝到另外一台中文操作系统的电脑上，问题现象一样。这个问题很让我意外，以前只出现过缺少DLL的情况，而这次出现这个问题，让我一时没办法。</p><p>想想，无非是两个原因引起的，要么是电脑上没有运行环境的原因，要么是程序里依赖了其它的一些库。于是百度一下，发现好多相关主题。</p><p>最终解决方法是：下载下面这个文件，打开并运行即可解决。</p><p><a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=32BC1BEE-A3F9-4C13-9C99-220B62A191EE&amp;displaylang=en" target="_blank" rel="noopener"><img src="/assets/pictures/VC++/Download.png"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;假如一套写好的程序，在本地都运行正常，但是Copy到其他电脑上，就出现一些奇怪的问题。你有木有遇到过呢？&lt;/p&gt;
+&lt;p&gt;今天我就遇到这样一个问题。有台电脑是英文操作系统，把软件打开运行时，提示&lt;strong&gt;“由于应用程序的配置不正确，应用程序未能启动，重新安装应用程序可能
+      
+    
+    </summary>
+    
+    
+      <category term="VC++" scheme="http://iscript.com.cn/categories/VC/"/>
+    
+    
+      <category term="DLL VC++" scheme="http://iscript.com.cn/tags/DLL-VC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人生真实之相——无常之老虎</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-08-renshengzhenxiang/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-08-renshengzhenxiang/</id>
+    <published>2020-01-27T04:52:20.339Z</published>
+    <updated>2015-02-08T08:24:59.940Z</updated>
+    
+    <content type="html"><![CDATA[<p>从《佛说譬喻经》来看人生之实相及后生一大事。释尊在《佛譬喻经》中，以一段有名的譬喻，向我们开示“人生究竟是什么？”，这譬喻是这样的：</p><p><img src="/assets/pictures/Life/20150208_Boxcn.jpg"></p><p>在一个寂寞的秋天黄昏，无尽广阔的荒野中，有一位旅人蹒跚地赶着路。突然，旅人发现薄暗的野道中，散落着一块块白白的东西，加以注意之下，原来是人的白骨。</p><p>旅人正在疑惑思考之际，忽然从前方传来惊人的咆哮声，随着一只大老虎紧逼而来。看到这只老虎，旅人顿时了解了白骨的原因，立刻向来时的道路拔腿逃跑。但显然是迷失了道路，旅人竟跑到一座断崖绝壁的顶上。</p><p>旅人在毫无办法之中，幸好断崖上有一棵松树，并且发现从树枝上垂下一条藤蔓。于是旅人便毫不犹豫，马上抓着藤蔓垂下去，可谓九死一生。然而这只老虎眼看好不容易即将入口的食物，居然被逃离，可以想象到它是如何的懊恼地在崖上狂吼着。</p><p>好感谢啊！幸亏这藤蔓的庇荫，终于救了宝贵一命。旅人暂时安心了，但是当他朝脚下一看时，不禁“啊”了一声，原来脚下竟是波涛汹涌、底不可测的深海，怒浪澎湃着，而且在那波浪间还有三条毒龙，正张开大口等待着他的坠落，旅人不知不觉全身战栗起来。但更恐怖的是依靠救生的藤蔓，在其根接处出现了两只白色和黑色的老鼠，正在交互地啃着藤蔓。</p><p>旅人拼命地摇动藤蔓，想赶走老鼠，可是老鼠一点也没有逃开的样子。而且每当摇动一次藤蔓时，便有水滴从上面落下来，这是从枝上筑窝的蜜蜂巢所滴下的蜂蜜。由于蜂蜜太甜了，旅人完全忘记自己正处于危险万分的境地，此心陶陶然地被蜂蜜所夺。释尊开示这愚痴的旅人之相，便是所有人类的“人生之实相”。那么这段譬喻释尊是意味着什么呢？</p><p>释尊“无常之老虎”的法语，是在开示我们的人生真实之相。</p><blockquote><p><strong>1. 孤独的心灵</strong></p></blockquote><p><strong>旅人</strong>：这旅人即是指我们自己。</p><p><strong>荒野</strong>：无尽而寂寞的荒野是譬喻我们无尽寂寞的人生。我们从生下来时，就成为旅人在作人生之旅了。既是旅人，应知目的地。如今我们是以何目的而出生到人间来呢？如若不知，岂不就和这愚痴的旅人一样了。</p><p><strong>秋天的黄昏</strong>：秋天的黄昏是譬喻人生的孤寂感。何故我们的人生就象秋天的孤寂？因为我们是孤独一人旅行之故。虽说有亲属、家族、朋友，但并没有可以互相倾吐心中的一切、互相理解的心灵之友。即使是夫妻，终此一身也未必能互相理解心中之事。人生的孤寂，原因就在这心灵的孤独，难道你未曾有过孤独的感伤吗？</p><p><strong>白骨</strong>：路边的白骨是我们人生的旅途中，家族、亲属、朋友等的死亡。我们活到现在，应该看到很多白骨，那时我们有何想法？有何感触？我们可曾注意到紧逼而来的“无常之虎”？</p><p><strong>老虎</strong>：饥饿的老虎所譬喻的即是我们自己的死亡。世间的一切都是无常的，因此，我们非死不可。死对我们而言是最恐怖的事，所以释尊以恐怖的老虎作譬喻。现在这无常之虎猛然地向我们逼来，但由于我们以为这是非常恐怖的事，所以平时不想去思考它。</p><p>而且如果我们认为佛教谈论死亡，而感到阴森森，并且厌恶的话，就是对佛教完全误解了。我们平生虽然忘记死，逃避死，但死必然会来到，这种心态并不能解决死的问题。</p><p>唯有与死正面对决，而获得解决，才能得到绝对的安心与幸福，因此佛教才提到死的事。作为旅人的我们，本能地从死逃开，一有病就到医院，或以药物来跟死亡搏斗，但终究难逃一死。</p><blockquote><p><strong>2. 无力的松树</strong></p></blockquote><p><strong>松树</strong>：接着我们攀上崖顶的松树，松树是指金钱、财产、名誉、地位等等。这些东西即使再多，在死亡的面前也仍是无力的。像历史上有辉煌成就的秦始皇、汉高祖，临终时也不免感到“啊！人生犹如梦中之梦”而寂寞地死去。</p><p>我们现在能握着金银、财产、名誉、地位等而含笑地迎接死亡吗？濒临死亡时，一物也带不走，因此能够微笑地面对死亡是不可能的。</p><blockquote><p><strong>3. 人生是梦</strong></p></blockquote><p><strong>藤蔓</strong>：藤蔓所譬喻的是“还不会，还不会，我还不会死”的那种以为还有二十年三十年的寿命可依恃，但即使认为“还有十年、还有二十年可活着”，但你认为到底人寿几何？想想看便知：已过去的十年二十年，也不过是“啊”的一声之间，便如梦如幻般地消逝了，而今以后的十年二十年，也同样是“啊”的一声之间便会过去。</p><p><strong>老鼠</strong>：咬着藤蔓的白老鼠和黑老鼠是指白天和晚上。白天的白老鼠和晚上的黑老鼠互相地在缩短我们的寿命。所谓活了今天一天，便是死了今天一天。即使过年、节日、假日也都一刻不休地在威逼我们的生命。因此最后藤蔓必定被咬断，这便是“死”。</p><blockquote><p><strong>4. 后生大事</strong></p></blockquote><p>人生谁都是过客 相守百年也是梦</p><p>世上万般带不去 一双空手见阎罗</p><p>作为旅人的我们，此时唯有坠入深不见底的毒龙深海里。而且在我们死后，必定有“后生一大事”。</p><p><strong>深海</strong>：深海所譬喻的便是“地狱”。坠入此地狱，必须承受“八万劫中大苦恼”。这一件事情便称为：“后生一大事”。</p><p>一坠地狱八万劫 再得人身复几时</p><p><strong>毒龙</strong>：产生地狱之苦的是这三条毒龙，这三条毒龙即指我们的贪欲、嗔怒、愚痴的可怕之心。由于贪欲之故，我们不知犯了多少杀、盗、淫、妄的恶业；由于嗔怒之故，在心中不知累积了多少对翁姑、朋友、他人“愿他快死”等心杀之罪；由于愚痴之故，不知累积了多少对自己不幸的愤懑、对他人幸福的妒嫉之罪。</p><p>善因善果、恶因恶果、自因自果的因果法则是不会有丝毫差错的。由自己所不断造作的罪恶所生出的地狱，最后还是由自己坠入。教我们解决此后生大事的便是佛教，但作为旅人的我们，忘记了逼在足下的后生大事，此心完全被蜂蜜所夺。</p><p><strong>蜂蜜</strong>：蜂蜜是指人的五欲—财欲、色欲、名欲、食欲、睡眠欲。一天之中，我们不断所想的，持续所求的，无非是为了这五欲的满足。然而不断地舔着蜂蜜，不知不觉地坠下去，岂不是太愚痴了吗？我们能否认自己不是这个旅人吗？释尊在此开示我们人生的真实之相—亦即此“后生一大事”，一刻一刻地逼近着，并且向我们说明解决之道。</p><p>来吧！莫让死看到我们的背后，要从正面跟死决对。唯有解决死，才能真正得到人生绝对的安心与幸福。能够打开佛教通往幸福之门的唯有我们自己啊！</p><blockquote><p><strong>人身难得今已得 佛法难闻今已闻</strong></p></blockquote><p><strong>此身不向今生度 更待何生度此身</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;从《佛说譬喻经》来看人生之实相及后生一大事。释尊在《佛譬喻经》中，以一段有名的譬喻，向我们开示“人生究竟是什么？”，这譬喻是这样的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/pictures/Life/20150208_Boxcn.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在一个
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="人生 老虎" scheme="http://iscript.com.cn/tags/%E4%BA%BA%E7%94%9F-%E8%80%81%E8%99%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>孔子学琴的启示</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-08-kongzixueqin/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-08-kongzixueqin/</id>
+    <published>2020-01-27T04:52:20.316Z</published>
+    <updated>2015-02-08T08:29:49.877Z</updated>
+    
+    <content type="html"><![CDATA[<p>从前，孔子跟从师襄子学琴。师襄子教了一首曲子后，孔子每日弹奏，丝毫没有厌倦。过了十天，师襄子说：“这首曲子你弹得很不错，可以学新曲子了。”孔子说：“我虽学会了曲谱，可还没有掌握一些高难度的技巧。”</p><p><img src="/assets/pictures/Life/20150208_boxcn.png"></p><p>又过了许多天，师襄子说：“你已掌握了弹奏技巧，可以学新曲子了。”孔子说：“我还没有品味出这首曲子的神韵。”</p><p>又过了许多天，师襄子说：“你已领会了这首曲子的神韵，可以学新曲子了。”孔子说：“我还没体会出作曲者是怎样一个人，尚未深入他的内心世界。”</p><p>又过了很多天，孔子庄重地向远处眺望，说：“我现在知道作曲者是什么人了。这人长得黑，身材魁梧，胸怀大志，要统一四方，一定是周文王。”师襄子听后，立即离席行礼，说：“这首曲子就叫做《文王操》啊！”</p><p>我们学习应如“孔子学琴”般深入。有些人看书总是看一半，这本读了几页，又翻翻那一本，那本掀了几章，又换另一本……这样一来，书桌上摊满了要读的书，可是一本也没有读完。曾国藩说：“桌上不可多书，心中不可无书。”否则，桌上放的书太多了，说明你心不专一，肯定学不好、学不精。</p><p>有人可能问：“既然读书要专一，那我们上学时，同时要学语文、数学、物理、化学等好几门功课，这是不是不合理呢？”也不是。刚开始学文化知识时，需要对各种学问广泛涉猎，以增加自己的见识。但到了最后，还是要专学，像现在的大学，每个人都有各自的专业。</p><p>实际上，学佛也要如此。刚进入佛门时，对显宗、密宗，包括世间知识，都要广闻博学，以博采众家之长。然后在此基础上，你可以选择一门专修，要么念佛，要么参禅，要么修大圆满。就像一个人，从小学到高中的知识全部学完后，上大学时可以钻研自己的专业，因为他已经学过了语文、数学、物理等各种学科，故从中选出一门“专”学即可。但如果没有这些基础，他从未学过数理化，那即使让他去“专”，他也不一定“专”得进去。我们学佛也是同样，先要通过广泛闻思，遣除相续中的各种怀疑，然后闻思到量之后，就应像无垢光尊者所说，所知犹如天上繁星般学不尽，故应选择最具有实义的法，终身行持。因此，藏传佛教也提倡专修。</p><p>《庄子》中说：“夫道不欲杂，杂则多，多则扰，扰则忧，忧而不救。”一个人若懂得太多了，有时会流于表面、博而不专，考虑问题时也特别复杂，给自己徒增困扰，如此一来，烦恼会越来越多，痛苦会越来越大，最后连自己都救不了，更何况他人了？这样的人好像什么都学过，但真要他去做件事，又什么都不行。诚如萨迦班智达所言：“智者学习诸知识，究竟一门通世间，愚者虽是见识广，不能照明如星光。”</p><p>对于这种“多才多艺”而又样样“稀松平常”的人，《荀子》中讲到了一个很好的比喻——鼯鼠。书中说：“鼯鼠五能，不能成一技。”它能飞，却飞不过屋顶；能攀，却爬不上树梢；能游，却渡不过小水沟；能跑，却赶不上人走；能藏，却盖不住身体。“鼯鼠有五种技能，但没有一样拿得出手，这是它的悲哀。有些道友背书也是如此。《亲友书》背了一点，《中观庄严论》背了一点……每部论典都只背了一点，没有一部是从头到尾背完的，最终自己一无所成。</p><p>因此，学习任何知识，应圆满以后再放下。《君规教言论》和《入菩萨行论》中都讲过，做事情要先做完一件，再做另一件，否则，如同走路时一只脚尚未站稳，另一只脚就抬起来，这样人会跌倒的。</p><p>学习不在多，而在于精。希望大家学有所专、修有所成，切莫像野牛吃草一样，贪多嚼不烂，好像什么都懂，但什么都不精通。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;从前，孔子跟从师襄子学琴。师襄子教了一首曲子后，孔子每日弹奏，丝毫没有厌倦。过了十天，师襄子说：“这首曲子你弹得很不错，可以学新曲子了。”孔子说：“我虽学会了曲谱，可还没有掌握一些高难度的技巧。”&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/pictures/Life
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="专业 完美" scheme="http://iscript.com.cn/tags/%E4%B8%93%E4%B8%9A-%E5%AE%8C%E7%BE%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大数据的威力之百度迁徙</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-15-BaiduQianXi/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-15-BaiduQianXi/</id>
+    <published>2020-01-27T04:52:20.297Z</published>
+    <updated>2015-02-15T14:52:57.269Z</updated>
+    
+    <content type="html"><![CDATA[<p>大数据时代远不远？不远，它已经慢慢出现在我们眼前。</p><p>“百度地图春节人口迁徙大数据”（简称“<a href="http://qianxi.baidu.com/" target="_blank" rel="noopener">百度迁徙</a>”）是百度公司在2014年春运期间推出的一项技术品牌项目，于2014年1月26日0:00正式上线。</p><p>在讨论百度迁徙之前，我们先为大家解释一下这些常常见到的名词都代表什么意思。</p><blockquote><p><strong>LBS</strong></p></blockquote><p>Location Based Service的缩写，基于位置服务。意思就是这项服务内容是基于位置定位的。现在我们智能手机中LBS服务不少，比如打车服务、周边团购信息查询等，都是先确定了用户的位置再提供相应的服务。</p><blockquote><p><strong>GPS</strong></p></blockquote><p>Global Positioning System，美国军方开发的卫星定位系统，由卫星不断发布精准的时间信息，通过终端产品计算确定用户位置。其特点是覆盖面广、精度高(民用3-10米)、民用免费等特点。</p><blockquote><p><strong>粗略定位</strong></p></blockquote><p>粗定位有很多方式，我们比较常见的就是手机通过基站的粗定位，其原理与卫星定位差别不大，但是精度有限。比如在通讯基站较为密集的城市精度较好，在落后城市中基站较少就会出现很大的偏差。</p><blockquote><p><strong>API</strong></p></blockquote><p>Application Programming Interface缩写，意为应用程序编程接口。我们使用的应用程序并非每一项服务都是有开发商一家完成的，有些服务需要调用其他公司的服务。说到百度迁徙则就意味着百度的LBS服务的API。对于中国严格限制地图服务商的政策下，更多的应用开发商都需要选择不同的位置服务商来调用数据。</p><blockquote><p><strong>手机定位</strong></p></blockquote><p>手机定位主要可以通过上面介绍的两种方式，若要进行连贯导航，必须透过GPS连续定位获取。而手机定位之后会在各种软件、服务中留下“痕迹”，百度迁徙则是透过各种方式获取了用户的位置信息，通过大量的数据演算得来。</p><p>那么通过上面的一些名词解释，可能大家不难理解百度迁徙是从何而来。当然伴随着手机定位的数据统计，也会让用户怀疑隐私是否安全等问题，那么下面我们就来看看百度迁徙的内容以及伴随生活的定位服务会给我们带来什么样的优势与隐患。</p><p><strong>迁徙数据从何而来？</strong></p><p>首先百度迁徙的数据其实并非完全精准的，只是一个粗略定位数据的统计，“直线模式”就可以证明并非实时定位的数据，那么百度只需要调用春运路程的起点与终点数据既可以收集一个用户的信息。原理有了，我们还需要大量的数据作为基础。</p><p><strong>看似非常复杂的迁徙图，其实原理并不复杂，需要大量的数据做支撑。</strong></p><p>那么百度的数据是从何而来呢?去年3月份统计，国内移动通讯用户达到了11.46亿，而基于百度API的应用程序位置信息请求数量达到每日35亿次(2013年8月数据)，也就是说平均到每一个用户，我们每天都会请求差不多3次位置数据，这样庞大的数据量为百度迁徙提供了基础。</p><p>在日常生活中，我们打开微信、微博甚至玩游戏都有可能请求位置数据，如果我们卸载了百度相关的应用之后其实也不能避免位置信息被收集，百度的LBS服务API已被数十万应用采用，真的是“防不胜防”。</p><p>透过了如此大量的数据积累之后，百度迁徙中每一天都可以积累相当的位置信息。但是也有网友对于百度迁徙中8小时为单位的查询表示疑问，8小时为一个循环的数据周期可能不够准确。其实这并不重要，百度迁徙本身是大数据时代下的一个新面貌，而且在样本数量足够多的情况下，就足够了。</p><p>百度迁徙是大数据时代的一个具象表现，其实我们日常生活中还有各种各样的数据被收集起来为各种公共事业服务，让商家进行决策，但个人数据的采集一方面会给我们带来很多便利，同时也存在一些隐患。</p><p><img src="/assets/pictures/Life/BaiduQianXi_Boxcn_1.jpg"></p><p><img src="/assets/pictures/Life/BaiduQianXi_Boxcn_2.jpg"></p><p><img src="/assets/pictures/Life/BaiduQianXi_Boxcn_3.jpg"></p><blockquote><p><strong>百度迁徙：<a href="http://qianxi.baidu.com/" target="_blank" rel="noopener">http://qianxi.baidu.com/</a></strong></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;大数据时代远不远？不远，它已经慢慢出现在我们眼前。&lt;/p&gt;
+&lt;p&gt;“百度地图春节人口迁徙大数据”（简称“&lt;a href=&quot;http://qianxi.baidu.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;百度迁徙&lt;/a&gt;”）是百度公司在201
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="大数据 百度 春运" scheme="http://iscript.com.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE-%E7%99%BE%E5%BA%A6-%E6%98%A5%E8%BF%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>把&quot;新桃换旧符&quot;,也别忘&quot;倒空自己&quot;</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-24-HappyNewYear_2015/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-24-HappyNewYear_2015/</id>
+    <published>2020-01-27T04:52:20.282Z</published>
+    <updated>2015-02-24T08:03:30.086Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="爆竹声中一岁除，春风送暖入屠苏。千门万户曈曈日，总把新桃换旧符。"><a href="#爆竹声中一岁除，春风送暖入屠苏。千门万户曈曈日，总把新桃换旧符。" class="headerlink" title="爆竹声中一岁除，春风送暖入屠苏。千门万户曈曈日，总把新桃换旧符。"></a>爆竹声中一岁除，春风送暖入屠苏。千门万户曈曈日，总把新桃换旧符。</h3><p><img src="/assets/pictures/Life/HappyNewYear2015_BoxCn.jpg"></p><p>　　旧年即将过去，新年即将到来，对于每一个人来说，这是又一次“清空”，也是又一次“开始”。</p><p>　　过去的一年，乃至过去的数年，也许我们活得太不容易甚至俨然就是苦苦煎熬。但幸运的是，世间万事万物——包括不幸烦忧——都有终结和尽头。而年关，就是最共同最具庄严仪式感最有说服力的终结象征，是形式上与过去告别，是内心深处开启重生，甚至脱胎换骨！</p><p>　　总是常见很多“心灵鸡汤”类的劝世文章，告诉我们要“倒空自己、内心清零”。其实，这些美好的愿望何异于冠冕堂皇的“大道理”，是“说起来容易做起来难”。我们中国人，说是“看不穿”也好，说是“责任感”也罢，千百年来，只是“放不下”，还是“放不下”：再苦再累，心里再明白，沉重的包袱也总是无法轻易从肩上心头卸下，大家的表情，便总是那样严肃惶恐苦大仇深。</p><p>　　我们的文化性格便是如此。我们一年半载无法通过“解放思想、改良文化”来根本改变。因此，过年，实在是一件“翻身得解放”的大好事。过完除夕，看罢春晚，发过短信，旧年彻底过去了，我们内心的郁结、担忧、憧憬以及无法言说的悲喜，也就在这普天同庆的仪式中化为心清如水。第二天早起，面对新桃旧符换了人间的崭新世界，我们算是“倒空了自己”，终于可以“放下包袱，开动机器”！</p><p>　　中国人活得累，这已经是人人感同身受的共识。但是，如果我们的生活不是这么过着，而是没由来冷不防抽离我们灵魂深处的“累”，只怕我们更会经受不起而崩溃；而我们的社会生活，也许顿时失去一种驯化般却不失为谦抑的规范和秩序。</p><p>　　所以，活得累也并非那么不堪，并非完全一无是处，更并非“愚昧”或“愚昧的代价”。“累”的内核，到底是一种原本可贵的责任感；只可惜，与责任感相伴相生的焦虑感，也一样愈积愈多。其实中国人是很可爱可敬的，假如他们保持责任感，而总是善于清理伴生的焦虑感，则这样的人们庶几接近完美！</p><p>　　倒空自己，不是要扫除责任感，而是要清除“心理肿瘤”一样的焦虑。马年过去，羊年到来，惟愿在这安定祥和举国同庆的时刻，我们每一个人内心久积的焦虑，被快马带走，被马蹄踏碎，让我们每一个人的内心，倒空烦忧，喜气“羊羊”、幸福吉祥！</p><blockquote><h4 id="倒空自己也可以理解为放松自己，放松的时候才是力量积聚的时候。"><a href="#倒空自己也可以理解为放松自己，放松的时候才是力量积聚的时候。" class="headerlink" title="倒空自己也可以理解为放松自己，放松的时候才是力量积聚的时候。"></a>倒空自己也可以理解为放松自己，放松的时候才是力量积聚的时候。</h4></blockquote><p><em>（摘自网络）</em></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;爆竹声中一岁除，春风送暖入屠苏。千门万户曈曈日，总把新桃换旧符。&quot;&gt;&lt;a href=&quot;#爆竹声中一岁除，春风送暖入屠苏。千门万户曈曈日，总把新桃换旧符。&quot; class=&quot;headerlink&quot; title=&quot;爆竹声中一岁除，春风送暖入屠苏。千门万户曈曈日，总把新桃
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="元日 新年" scheme="http://iscript.com.cn/tags/%E5%85%83%E6%97%A5-%E6%96%B0%E5%B9%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>公益广告《时光倒流》</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-24-ShiGuangDaoLiu/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-24-ShiGuangDaoLiu/</id>
+    <published>2020-01-27T04:52:20.268Z</published>
+    <updated>2015-02-24T08:34:48.054Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="瀑布的水逆流而上；太陽從西邊升起，落向東方；轟鳴的火車退回家鄉；我交回錄取通知書，忘了十年寒窗；…”莫非要一場時光倒流，才能讓你留在父母身邊更久？"><a href="#瀑布的水逆流而上；太陽從西邊升起，落向東方；轟鳴的火車退回家鄉；我交回錄取通知書，忘了十年寒窗；…”莫非要一場時光倒流，才能讓你留在父母身邊更久？" class="headerlink" title="瀑布的水逆流而上；太陽從西邊升起，落向東方；轟鳴的火車退回家鄉；我交回錄取通知書，忘了十年寒窗；…”莫非要一場時光倒流，才能讓你留在父母身邊更久？"></a>瀑布的水逆流而上；太陽從西邊升起，落向東方；轟鳴的火車退回家鄉；我交回錄取通知書，忘了十年寒窗；…”莫非要一場時光倒流，才能讓你留在父母身邊更久？</h3><p><img src="/assets/pictures/Life/20150224_Boxcn.jpg"></p><p><img src="/assets/pictures/Life/2015-02-24_155336_Boxcn.jpg"></p><p><img src="/assets/pictures/Life/2015-02-24_155500_Boxcn.jpg"></p><p><img src="/assets/pictures/Life/2015-02-24_155533_Boxcn.jpg"></p><p><img src="/assets/pictures/Life/2015-02-24_155604_Boxcn.jpg"></p><p><img src="/assets/pictures/Life/2015-02-24_155704_Boxcn.jpg"></p><p><strong>视频地址：<a href="http://v.qq.com/cover/x/xlq0jwggnutdl29.html" title="公益广告 - 时光倒流" target="_blank" rel="noopener">http://v.qq.com/cover/x/xlq0jwggnutdl29.html</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;瀑布的水逆流而上；太陽從西邊升起，落向東方；轟鳴的火車退回家鄉；我交回錄取通知書，忘了十年寒窗；…”莫非要一場時光倒流，才能讓你留在父母身邊更久？&quot;&gt;&lt;a href=&quot;#瀑布的水逆流而上；太陽從西邊升起，落向東方；轟鳴的火車退回家鄉；我交回錄取通知書，忘了十年寒窗
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="时光 倒流 亲情 父爱" scheme="http://iscript.com.cn/tags/%E6%97%B6%E5%85%89-%E5%80%92%E6%B5%81-%E4%BA%B2%E6%83%85-%E7%88%B6%E7%88%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>云存储不是存储？</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-25-Cloud/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-25-Cloud/</id>
+    <published>2020-01-27T04:52:20.247Z</published>
+    <updated>2015-02-25T13:00:20.604Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>我们在生活中总是听到“云存储”这个概念，但是你真的了解云存储吗？云存储不是存储，而是服务。云存储的核心是应用软件与存储设备相结合，通过应用软件来实现存储设备向存储服务的转变。</strong></p><p>我们在生活中总是听到“云存储”这个概念，但是你真的了解云存储吗？</p><p><img src="/assets/pictures/Life/20150225_cloud_Boxcn.jpg"></p><ul><li><strong>云存储是存储器吗？</strong></li></ul><p>云存储是在云计算(cloud computing) 概念上延伸和发展出来的一个新的概念，是指通过集群应用、网格技术或分布式文件系统等功能，将网络中大量各种不同类型的存储设备通过应用软件集合起来协同工作，共同对外提供数据存储和业务访问功能的一个系统。 当云计算系统运算和处理的核心是大量数据的存储和管理时，云计算系统中就需要配置大量的存储设备，那么云计算系统就转变成为一个云存储系统，所以云存储是一个以数据存储和管理为核心的云计算系统。</p><p>云存储不是存储，而是服务。就如同云状的广域网和互联网一样，云存储对使用者来讲，不是指某一个具体的设备，而是指一个由许许多多个存储设备和服务器所构成的集合体。使用者使用云存储，并不是使用某一个存储设备，而是使用整个云存储系统带来的一种数据访问服务。所以严格来讲，云存储不是存储，而是一种服务。</p><p>云存储的核心是应用软件与存储设备相结合，通过应用软件来实现存储设备向存储服务的转变。</p><ul><li><strong>云存储安全吗？</strong></li></ul><p>“云”这个概念被提出之后，安全性就是人们首先关注的要点。云计算，特别是云存储，已经有些年月了。我们目睹了Nirvanix公司的消亡，斯诺登揭露美国国家安全局的棱镜项目，以及美国主要电信服务运营商涉嫌勾结。由于棱镜计划的曝光，我们将看到更多非美国企业会停止将其数据托管在美国。安全已经成为处理数据的企业的头号关注问题。</p><p>对于云存储产品而言，除了安全和方便，容量也是决定其发展前景的重要元素。</p><p>在线资源的即时分享与互动已成为我们日常生活必不可少的一部分，云存储产品的出现，能够实现手机、平板电脑、台式电脑等智能终端设备的多屏合一、数据共享，极大方便了消费者的生活。越来越多的服务商向个人、各种企业用户推出了包括存储在内的云计算服务。IDC(internet data center)更是将新兴的云存储行业比作是“圈地运动”，并且将其视作早期竞争对手抢占SaaS（software as a service ）和云存储市场高地的机会。网盘作为云存储的一种应用模式，更是成为当下百度、金山、腾讯、360、阿里等互联网大佬们的“必争之地”。</p><p>不过，有云也意味着有“雨”。云存储并不总像看起来那样“美”——将数据迁移至云中致使用户在数据安全性和可用性方面高度受制于其云存储服务器供应商，可以说，对安全性和可用性的担忧是企业和个人走向云存储模式的重要影响因素。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;我们在生活中总是听到“云存储”这个概念，但是你真的了解云存储吗？云存储不是存储，而是服务。云存储的核心是应用软件与存储设备相结合，通过应用软件来实现存储设备向存储服务的转变。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们在生活中总是听到“云存储”这个概念，但是你真的
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="云 云存储" scheme="http://iscript.com.cn/tags/%E4%BA%91-%E4%BA%91%E5%AD%98%E5%82%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>4G比3G更快更便宜吗？🔥</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-25-About_4G/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-25-About_4G/</id>
+    <published>2020-01-27T04:52:20.229Z</published>
+    <updated>2015-02-25T13:01:11.114Z</updated>
+    
+    <content type="html"><![CDATA[<p>2013年年底，我国正式发放4G牌照。在百姓眼中，4G与生活也许还有一段距离，而实际上我们早就迈进了4G时代的大门。从智能手机到智能冰箱再到电子健康手环，这些无一不是4G技术和移动互联网的产物。那4G的价值如何？</p><p>移动互联网如此大规模的信息服务需要一个高速稳定的平台，4G就是能够支撑这个平台的通信网络。4G是整个电信业和移动互联网的框架，是运行服务的载体，是传播互联网的通道。有人提问已经成熟的3G网络和新生的4G有何不同，其主要是速度和稳定性的区别，4G能够提供更快的速度，更大的带宽，更流畅的用户体验，用户群体成熟后资费也会比3G更便宜。也许以往你在使用3G时遇到了网络阻塞、上网速度缓慢，而4G服务则能够消除这些顾虑。</p><p><img src="/assets/pictures/Life/20150225_Boxcn.jpg"></p><p>网络通信资费与基础设施建设成本息息相关。如韩国、日本等城市密集地区，少量基站及配套设备就可以为大量用户提供服务，因此用户的平摊费用较低；如果用户分散在很大的区域中，如美国广袤的农耕地区，实现通信连接所需要的硬件设施数量大大增加，因此平摊到每个用户的费用就提高了。4G相比3G和老旧的2G网络能够吸引更多用户的入网，所以大量的用户会分摊网络建设和维护费用。除此之外，4G通信技术的提升也将推动服务价格下降。老旧的通信技术带宽有限，因此用高昂的收费标准抬高了上网门槛以限制上网人数，新技术大大提升了带宽，因此通信商可以用更低廉的费用吸引更多的用户，让通信费用进一步进入下降通道。不过通信费用的下降并非没有底限，今后在资费和服务之间，行业发展趋势不是降低费用，而是提高网络质量，服务商在相同的费用基础上提高通信速度，促使消费的性价比上升。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;2013年年底，我国正式发放4G牌照。在百姓眼中，4G与生活也许还有一段距离，而实际上我们早就迈进了4G时代的大门。从智能手机到智能冰箱再到电子健康手环，这些无一不是4G技术和移动互联网的产物。那4G的价值如何？&lt;/p&gt;
+&lt;p&gt;移动互联网如此大规模的信息服务需要一个高速稳定
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="LTE 4G" scheme="http://iscript.com.cn/tags/LTE-4G/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>预测未来 盘点大数据分析领域五大趋势🔥</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-25-BigData/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-25-BigData/</id>
+    <published>2020-01-27T04:52:20.204Z</published>
+    <updated>2015-02-25T13:20:13.491Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>目前，大数据分析是一个非常热门的行业，一夜间，似乎企业的数据已经价值连城。企业都在开始尝试利用大数据来增强自己的企业业务竞争力，但是对于大数据分析行业来说，仍然处于快速发展的初期，这是一个快速发展的领域，每时每刻的都在产生新的变化。近日我们就来看下大数据行业的未来的8个趋势。</strong></p><ul><li><strong>1.基于云的大数据分析</strong></li></ul><p>Hadoop是用于处理大型数据集的一个框架和一组工具，这个最初被设计工作在物理机的集群上，但是目前这种现象已经改变，越来越多的基于云中的数据处理器技术出现，例如亚马逊利用云的数据BI的托管长款，谷歌BigQuery中的数据分析服务，IBM的Bluemix云平等等，这些都是基于云的大数据分析平台。</p><p><img src="/assets/pictures/Life/20150225_BigData_Boxcn_1.jpg"></p><p>就目前而言，大数据的分析工作正开始向云计算迁移，因为大数据分析需要一个安全、稳定、可靠的审计环境。目前已经有很多公司开始跟云服务公司合作，希望得到一个能够横跨多个部门的云平台来支持公司的数据分析业务。随着云平台成本的降低，这个趋势将越发明显。</p><ul><li><strong>2.Hadoop：新的企业数据操作系统</strong></li></ul><p>Hadoop，分布式的分析框架，如今正在演变成分布式资源管理器，它可能将是数据分析的一个通用的操作系统。有了这些系统，你可以将不同的数据操作和分析操作插入到Hadoop分布式存储系统中来执行。</p><p>这是什么意思的？由于SQL，MapReduce，在内存中，流处理，图形分析和其他类型的工作负载都能够在Hadoop上有足够的性能来运行，越来越多的企业将会使用的Hadoop作为企业数据中心。 </p><ul><li><strong>3.更多的预测分析</strong></li></ul><p>随着大数据的发展，分析师不仅会嗯更多的数据一起工作，而且还将处理大量的许多属性的工具。但是随着大数据行业的发展，针对旧数据的分析更多的是为了提供预测的功能，毕竟人们更希望利用原有的数据来对未来产生有利的用途。</p><p><img src="/assets/pictures/Life/20150225_BigData_Boxcn_2.jpg"></p><ul><li><strong>4. 更多，更好的NoSQL</strong></li></ul><p>替代传统的基于SQL的关系数据库的产品被称为NoSQL数据库，如今被迅速的普及在特定种类的分析应用程序中。而且这一势头在持续增长，据估计，预计未来将有15至20个开源的NoSQL数据库共同存在，他们各自有的的专长，这些数据库会得到快速的发展。</p><ul><li><strong>5.在内存分析</strong></li></ul><p>使用内存数据库来加快分析处理的方式如今越来越受欢迎，很多用户都非常喜欢这种方式，目前很多基于内存的分析管理工具以及出现，其中以亚马逊的HANA一体机尤为明显。</p><p>除了分析软件看好这个市场，作为全球的企业级市场的处理器生产商，英特尔也非常看好这一领域的发展，从目前其产品推出的发展趋势来看，其内存支持将会越来越大，一些特定的产品甚至支持的比硬盘的容量还要大。</p><blockquote><p><strong>总结：数据分析是一个热门行业，这也是一个未来有很大发展的行业，所以目前很多厂商都针对大数据分析领域推出产品，但是对于企业用户来说，在选择产品的时候要注意，由于目前数据分析尚没有到达成熟的市场时期 ，所以市场上的分析工具参差不齐，在选择产品的时候还是要选择知名品牌为好。</strong></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;目前，大数据分析是一个非常热门的行业，一夜间，似乎企业的数据已经价值连城。企业都在开始尝试利用大数据来增强自己的企业业务竞争力，但是对于大数据分析行业来说，仍然处于快速发展的初期，这是一个快速发展的领域，每时每刻的都在产生新的变化。近日我们就来看下大数据行业
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="大数据" scheme="http://iscript.com.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《平凡的世界》开播</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-02-27-PingFanDeShiJie/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-02-27-PingFanDeShiJie/</id>
+    <published>2020-01-27T04:52:20.186Z</published>
+    <updated>2015-02-27T14:26:25.162Z</updated>
+    
+    <content type="html"><![CDATA[<p>《平凡的世界》根据同名小说改编，由SMG尚世影业、华视影视、榆林文旅、上海源存影业、乐视网联合出品当代农村剧，并由毛卫宁执导，王雷、佟丽娅 、袁弘、李小萌、刘威、尤勇、汪芦云、吕一、夏铭浩等人主演</p><p>该剧讲述了在面对现实压力和人生抉择时，兄弟俩依旧坚守最初梦想和对爱情执着的追求的故事。</p><p>该剧已于2015年2月26日在北京卫视、东方卫视首播。</p><p><img src="/assets/pictures/Life/pfdsj_1_Boxcn.jpg"></p><p><img src="/assets/pictures/Life/pfdsj_2_Boxcn.jpg"></p><p><img src="/assets/pictures/Life/pfdsj_3_Boxcn.jpg"></p><p><img src="/assets/pictures/Life/pfdsj_4_Boxcn.jpg"></p><p><img src="/assets/pictures/Life/pfdsj_5_Boxcn.jpg"></p><p><strong>视频地址：<a href="http://v.baidu.com/tv/22335.htm?fr=ala6&amp;ty=22" title="平凡的世界" target="_blank" rel="noopener">http://v.baidu.com/tv/22335.htm?fr=ala6&amp;ty=22</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;《平凡的世界》根据同名小说改编，由SMG尚世影业、华视影视、榆林文旅、上海源存影业、乐视网联合出品当代农村剧，并由毛卫宁执导，王雷、佟丽娅 、袁弘、李小萌、刘威、尤勇、汪芦云、吕一、夏铭浩等人主演&lt;/p&gt;
+&lt;p&gt;该剧讲述了在面对现实压力和人生抉择时，兄弟俩依旧坚守最初梦想和
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="平凡的世界 路遥" scheme="http://iscript.com.cn/tags/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C-%E8%B7%AF%E9%81%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>泪蛋蛋抛在沙蒿蒿林</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-03-09-ShanBeiminge/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-03-09-ShanBeiminge/</id>
+    <published>2020-01-27T04:52:20.167Z</published>
+    <updated>2015-03-09T13:22:25.810Z</updated>
+    
+    <content type="html"><![CDATA[<p>陕北民歌是陕北汉族劳动人民精神、思想、感情的结晶，陕北地区的汉族民歌分为劳动号子、信天游、小调三类。劳动号子包括打夯歌、打硪歌、采石歌、吆牛歌、打场歌。信天游分为高腔和平腔。这些自成体裁又各具特点的汉族民歌，都从各方面反映了社会生活，唱出了陕北人民的苦乐和爱憎，并且当社会制度根本改变的时候，民歌的内容和形式也随着发生变化。这种变化，反映在内容上表现了新的社会生活和新的人物形象，同时也使各种体裁具有了新的意义。</p><p>全国闻名的曲目有《走西口》、《赶牲灵》、《兰花花》、《推炒面》、《五哥放羊》、《刨洋芋》、《绣金匾》等。</p><p><img src="/assets/pictures/Life/2015-3-9_BoxCn_2.jpg"></p><embed src="http://music.163.com/style/swf/widget.swf?sid=28587890&type=2&auto=1&width=320&height=66" width="340" height="86" allownetworking="all"><pre><code>羊啦肚子手巾呦三道道个蓝咱们见个面面容易哎呀拉话话难一个在那山上呦一个在那沟咱们见不上那面面那就招呀招那手要不见个村村呦要不见个人我泪格蛋蛋抛在哎呀沙蒿蒿林一个在那山上呦一个在那沟咱们见不上那面面那就招呀招那手要不见个村村呦要不见个人我泪格蛋蛋抛在哎呀沙蒿蒿林一个在那山上呦一个在那沟咱们见不上那面面那就招呀招那手要不见个村村呦要不见个人我泪格蛋蛋抛在哎呀沙蒿蒿林我泪格蛋蛋抛在哎呀沙蒿蒿林</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;陕北民歌是陕北汉族劳动人民精神、思想、感情的结晶，陕北地区的汉族民歌分为劳动号子、信天游、小调三类。劳动号子包括打夯歌、打硪歌、采石歌、吆牛歌、打场歌。信天游分为高腔和平腔。这些自成体裁又各具特点的汉族民歌，都从各方面反映了社会生活，唱出了陕北人民的苦乐和爱憎，并且当社会制
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="平凡的世界 陕北民歌" scheme="http://iscript.com.cn/tags/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C-%E9%99%95%E5%8C%97%E6%B0%91%E6%AD%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>见个面面容易，拉手手的难</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-03-09-lashoushounan/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-03-09-lashoushounan/</id>
+    <published>2020-01-27T04:52:20.153Z</published>
+    <updated>2015-03-31T16:11:40.077Z</updated>
+    
+    <content type="html"><![CDATA[<p>当唱起陕北民歌见面面容易拉话话难的经典语句时，我想到的其实是人生,并且把它改成了拉手手难。</p><p>在人生的每个阶段，我们总是要制定一个目标，很多的时候，眼看着目标就要实现，结果却是恰恰相反。</p><p>见成功的面面容易，拉成功的手手很难。</p><p>所以，当成功在望的时候，其实是更需要努力的时候。</p><p><img src="/assets/pictures/Life/2015-3-9_BoxCn.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;当唱起陕北民歌见面面容易拉话话难的经典语句时，我想到的其实是人生,并且把它改成了拉手手难。&lt;/p&gt;
+&lt;p&gt;在人生的每个阶段，我们总是要制定一个目标，很多的时候，眼看着目标就要实现，结果却是恰恰相反。&lt;/p&gt;
+&lt;p&gt;见成功的面面容易，拉成功的手手很难。&lt;/p&gt;
+&lt;p&gt;所以，当
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="平凡的世界 陕北民歌" scheme="http://iscript.com.cn/tags/%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C-%E9%99%95%E5%8C%97%E6%B0%91%E6%AD%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>扔飞机的小男孩</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-04-03-throwpaperairplanesboy/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-04-03-throwpaperairplanesboy/</id>
+    <published>2020-01-27T04:52:20.134Z</published>
+    <updated>2015-04-03T15:27:20.823Z</updated>
+    
+    <content type="html"><![CDATA[<p>一个调皮的孩子在课堂上扔纸飞机，被老师抓到后罚在黑板上写500遍“我以后再也不在教室里扔纸飞机了(I will not throw paper airplanes in class.)”，于是这个小孩就在黑板上写了下面一段代码：</p><p><img src="/assets/pictures/VC++/thethrowairplanesboy.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一个调皮的孩子在课堂上扔纸飞机，被老师抓到后罚在黑板上写500遍“我以后再也不在教室里扔纸飞机了(I will not throw paper airplanes in class.)”，于是这个小孩就在黑板上写了下面一段代码：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/asse
+      
+    
+    </summary>
+    
+    
+      <category term="VC++" scheme="http://iscript.com.cn/categories/VC/"/>
+    
+    
+      <category term="漫画 程序员" scheme="http://iscript.com.cn/tags/%E6%BC%AB%E7%94%BB-%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《当你老了》一首真正让人感动的音乐</title>
+    <link href="http://iscript.com.cn/2020-01-27/2015-04-05-whenYouAreOld/"/>
+    <id>http://iscript.com.cn/2020-01-27/2015-04-05-whenYouAreOld/</id>
+    <published>2020-01-27T04:52:20.120Z</published>
+    <updated>2015-04-05T13:17:57.594Z</updated>
+    
+    <content type="html"><![CDATA[<p>《当你老了》是<a href="http://baike.baidu.com/view/2026785.htm" target="_blank" rel="noopener">赵照</a>一首2012年创作的原创歌曲。歌词出自于爱尔兰诗人<a href="http://baike.baidu.com/view/7846.htm" target="_blank" rel="noopener">叶芝</a>的同名诗作，原作是作者<a href="http://baike.baidu.com/view/7846.htm" target="_blank" rel="noopener">叶芝</a>对一直爱慕女友<a href="http://baike.baidu.com/view/5510268.htm" target="_blank" rel="noopener">茅德·冈</a>的纯情写照，追求一辈子的爱情。而赵照因为一些家里的变故，想到自己想到自己的母亲时偶然遇到这首诗，于是《当你老了》就创作出来了。在2014年第一季《<a href="http://baike.baidu.com/view/10392638.htm" target="_blank" rel="noopener">中国好歌曲</a>》的舞台上，赵照2次演唱了这首歌曲，全国媒体评审团给予了最高分，却并没有进入决赛。尽管如此，仍被评为《好歌曲》年度最走心歌曲。</p><p><img src="/assets/pictures/Life/Boxcn_whenYouAreOld_4.jpg"></p><p>歌曲《当你老了》被纳入2015年央视春晚节目单，并由<a href="http://baike.baidu.com/view/7336.htm" target="_blank" rel="noopener">莫文蔚</a>演唱。</p><p>2015年2月20日，《<a href="http://baike.baidu.com/view/12757222.htm" target="_blank" rel="noopener">我是歌手第三季</a>》第三轮淘汰赛中，<a href="http://baike.baidu.com/subview/15865/4811514.htm" target="_blank" rel="noopener">李健</a>也演唱了该歌曲，并获得了该场次第一名。</p><p>2015年3月27日，由李雪健、黄磊主演的电视剧《嘿，老头》上映，赵照的音乐作品《当你老了》再次登上了电视荧屏前，作为主题片尾曲。该剧与歌曲的完美契合，走心指数再度升温。</p><p>《当你老了》歌词出自于爱尔兰诗人叶芝的著名诗作。赵照表示，自己很羡慕那些既懂音乐，也深谙文学的音乐诗人。在看到这首诗后，就被诗歌的意境所打动，希望能用自己的音乐表达出来。在制作单曲时，就是一直琢磨如何把诗唱成歌，还要保留一些诗歌灵魂的东西。最后有了这首歌。我觉得歌里唱的东西是每一个人都需要的，我把它唱出了送给大家。</p><p><img src="/assets/pictures/Life/Boxcn_whenYouAreOld_1.jpg"></p><p><img src="/assets/pictures/Life/Boxcn_whenYouAreOld_2.jpg"></p><p><img src="/assets/pictures/Life/Boxcn_whenYouAreOld_3.jpg"></p><p><strong>纯音乐版（已开启自动播放）：</strong></p><p><embed playerid="musicplayer_97351427030071396" flashvars="type=art&amp;aid=dbc973f50102vnl2&amp;songlist=100239878&amp;sn=0&amp;auto=true" wmode="transparent" scale="noscale" quality="high" bgcolor="#000" name="xx0" src="http://music.sina.com.cn/shequ/player/sinablog/blogPlayer.swf" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="23px" width="318px"><br></p><blockquote><p><strong>《当你老了》（中国好歌曲现场版歌词）</strong></p><p>当你老了 头发白了</p><p>睡意昏沉</p><p>当你老了 走不动了</p><p>炉火旁打盹 回忆青春</p><p>多少人曾爱你青春欢畅的时辰</p><p>爱慕你的美丽 假意或真心</p><p>只有一个人还爱你虔诚的灵魂</p><p>爱你苍老的脸上的皱纹</p><p>当你老了 眼眉低垂</p><p>灯火昏黄不定</p><p>风吹过来 你的消息</p><p>这就是我心里的歌</p><p>多少人曾爱你青春欢畅的时辰</p><p>爱慕你的美丽 假意或真心</p><p>只有一个人还爱你虔诚的灵魂</p><p>爱你苍老的脸上的皱纹</p><p>当我老了 我真希望</p><p>这首歌是唱给你的</p></blockquote><embed src="http://music.163.com/style/swf/widget.swf?sid=26090100&type=2&auto=0&width=278&height=32" width="298" height="52" allownetworking="all"><p><strong>这首歌写的真好，父母老了，我们也会老，有苍伤有亲情，自然规律呀，抗拒不了，只有珍惜当下，孝敬父母，珍爱自己。</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;《当你老了》是&lt;a href=&quot;http://baike.baidu.com/view/2026785.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;赵照&lt;/a&gt;一首2012年创作的原创歌曲。歌词出自于爱尔兰诗人&lt;a href=&quot;http://ba
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://iscript.com.cn/categories/Life/"/>
+    
+    
+      <category term="爱情 亲情" scheme="http://iscript.com.cn/tags/%E7%88%B1%E6%83%85-%E4%BA%B2%E6%83%85/"/>
     
   </entry>
   
