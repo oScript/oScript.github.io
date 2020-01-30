@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>iScript</title>
   
-  <subtitle>脚本精灵</subtitle>
+  <subtitle>iScript</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://iscript.com.cn/"/>
